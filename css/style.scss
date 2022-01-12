@@ -1,0 +1,633 @@
+@charset 'UTF-8';
+// -----
+// 設定
+// -----
+
+// 色
+$color-main: #E56F4A; // ベース色
+$color-active: #514E43; // アクティブ色
+$color-background-base: #fff; // 背景色
+$color-text-base: #514E43; // テキスト色
+$hover-opacity: 0.6; // 透過度
+
+/* // レイアウト幅
+$layout-width-canvas: 1280px;
+$layout-width-inner: 1200px; */
+
+// 階層
+$layer: (
+	modal: 100, // モダール
+	drawer: 40, // ドロワー
+	floating: 30, // フローティングアイテム
+	header: 20, // ヘッダー
+	footer: 10, // フッター
+	default: 1,
+);
+
+// 余白
+$padding-pc: 24px;
+$padding-tab: 24px;
+$padding-sp: 16px;
+
+/* // ヘッダー高さ
+$header-height-pc: 100px;
+$header-height-sp: 60px; */
+
+// フォント
+
+$font-family-default: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif; // 標準フォント
+$font-family-english: sans-serif;
+$font-family-base: $font-family-default;
+$font-size-base: 16px;
+$font-weight-base: 300;
+$line-height-base: 1.6;
+
+// ブレークポイント
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+
+// -----
+// 初期化
+// -----
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	font-weight: $font-weight-base;
+	color: $color-text-base;
+	line-height: $line-height-base;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: $color-background-base;
+	overflow-x: hidden;
+	overflow-wrap: break-word;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	border: none;
+}
+
+// -----
+// 補完クラス
+// -----
+
+// PCだけ非表示
+.hidden-pc {
+	@include mq(xl) {
+		display: none;
+	}
+}
+
+// スマホだけ非表示
+.hidden-sp {
+	@include mq(sm) {
+		display: none;
+	}
+}
+
+// --------------------------------
+// 共通
+// --------------------------------
+
+.sub-title{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    @include mq(lg) {
+		font-size: 24px;
+        text-align: center;
+	}
+}
+
+.discription-text{
+    font-size: 24px;
+    @include mq(lg) {
+		font-size: 20px;
+        text-align: center;
+	}
+}
+
+// --------------------------------
+// fixed - 固定
+// --------------------------------
+
+.fixed-twitter-link{
+    position: fixed;
+    z-index: 999;
+    left: 15px;
+    top: 40px;
+    @include mq(lg){
+        left: auto;
+        right: 25px;
+        top: auto;
+        bottom: 10px;
+        font-weight: bold;
+    }
+    @include mq(sm){
+        .twitter-link{
+            font-size: 12px;
+        }
+    }
+}
+
+// --------------------------------
+// header - ヘッダー
+// --------------------------------
+
+.header{
+    position: relative;
+    width: 100%;
+}
+
+
+.header-wrapper{
+    background-image: url("../img/web-bg.png");
+    background-repeat: repeat-y;
+    padding-top: 40px;
+    @include mq(lg) {
+		padding-top: 50px;
+	}
+}
+
+.header-head{
+    padding: 0 70px 17px;
+    @include mq(lg) {
+		padding: 0 3% 10px;
+	}
+}
+
+.header-youtube-box{
+    position: relative;
+    height: 80px;
+    margin-bottom: 25px;
+    @include mq(lg) {
+		height: 60px;
+	}
+    @include mq(md) {
+		height: 40px;
+	}
+}
+
+.header-youtube-link{
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    position: absolute;
+    right: 25px;
+    top: 0;
+    width: 314px;
+    height: inherit;
+    border-radius: 5px;
+    img{
+        width: 100%;
+        padding: 15px 35px;
+    }
+    @include mq(lg) {
+		width: 227px;
+        img{
+            padding: 3px 7px;
+        }
+	}
+    @include mq(md) {
+		width: 157px;
+	}
+}
+
+.header-yotube-hand{
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 70px;
+    @include mq(lg) {
+		width: 50px;
+        bottom: -25px;
+	}
+    @include mq(md) {
+		width: 40px;
+        bottom: -20px;
+	}
+}
+
+.header-qr{
+    max-width: 1514px;
+    margin: 0 auto;
+}
+
+.header-celebrity{
+    padding: 0 32px;
+    background-color: #FFDB8B;
+}
+
+.celebrity-list{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.celebrity-item{
+    width: calc(20% - 8px); /*（100% / カード枚数 - 余白の幅 * 余白の数 / カード枚数 )*/
+    margin: 0 4px;
+    img{
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+    }
+    min-width: 250px;
+    @include mq(lg) {
+		width: calc(25% - 8px);
+        min-width: 200px;
+	}
+    @include mq(md) {
+		width: calc(100% - 20%);
+        margin: 0 10%;
+        min-width: 80%;
+	}
+}
+
+// --------------------------------
+// main - メイン
+// --------------------------------
+
+.main-wrapper{
+    padding: 245px 84px 5px;
+    background-image: url("../img/web-bg.png");
+    background-repeat: repeat-y;
+    @include mq(lg) {
+		padding: 60px 3% 5px;
+	}
+}
+
+.main-lead{
+    width: 100%;
+    text-align: center;
+    img{
+        object-fit: contain;
+    }
+}
+
+.big-twitter-link{
+    margin-top: 28px;
+    text-align: center;
+    .twitter-link{
+        font-size: 40px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        letter-spacing: 0.1em;
+        .twitter-logo{
+            width: 36px;
+            height: 36px;
+        }
+    }
+    @include mq(lg){
+        .twitter-link{
+            font-size: 24px;
+        }
+    }
+    @include mq(md){
+        .twitter-link{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}
+
+// --------------------------------
+// what-doing-content - ディスクリプション
+// --------------------------------
+
+.what-doing-content{
+    margin-top: 28px;
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    max-width: 2500px;
+    @include mq(lg) {
+		padding: 15px 5% 10px;
+	}
+}
+
+.why-doing-content{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    @include mq(lg){
+        display: block;
+    }
+}
+
+.why-doing-body{
+    max-width: 70%;
+    padding-right: 5%;
+    @include mq(lg){
+        width: 100%;
+        max-width: 100%;
+        padding-right: 0;
+        padding-bottom: 16px;
+    }
+}
+
+.why-doing-img{
+    max-width: 30%;
+    @include mq(lg){
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.now-doing-content{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    @include mq(lg){
+        display: block;
+    }
+}
+
+.now-doing-body{
+    max-width: 70%;
+    padding-left: 5%;
+    @include mq(lg){
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-bottom: 16px;
+    }
+}
+
+.now-doing-img{
+    max-width: 30%;
+    @include mq(lg){
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-bottom: 16px;
+    }
+}
+
+.about-FukushimaSoulFes{
+    margin-top: 28px;
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    @include mq(lg) {
+		padding: 15px 5% 10px;
+	}
+}
+
+
+// --------------------------------
+// sections-content - セクションズ
+// --------------------------------
+
+
+
+.sections-content{
+    margin-top: 28px;
+    display: flex;
+    @include mq(lg) {
+        display: block;
+	}
+}
+
+.about-schedule-content{
+    margin-right: 28px;
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    @include mq(lg) {
+		padding: 15px 5% 10px;
+        margin-right: 0;
+        margin-bottom: 28px;
+	}
+}
+
+
+.event-row{
+    display: flex;
+    font-size: 24px;
+    & + & {
+        margin-top: 5px;
+    }
+    @include mq(lg){
+        font-size: 16px;
+    }
+}
+
+.event-schedule{
+    width: 100%;
+}
+
+.event-time{
+    display: inline-block;
+    width: 20%;
+    min-width: 165px;
+    @include mq(lg){
+        min-width: 110px;
+    }
+}
+
+.event-text{
+    display: inline-block;
+    width: 80%;
+    @include mq(lg){
+        max-width: calc(100% - 110px);
+    }
+}
+
+.twitter-link{
+    display: inline-block;
+    color: inherit;
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #00acee;
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 4px 2px;
+    box-shadow: 3px 3px 3px rgba($color: #333, $alpha: 0.6);
+    @include mq(lg){
+        font-size: 16px;;
+    }
+}
+
+.twitter-logo{
+    vertical-align: middle;
+    width: 28px;
+    height: 28px;
+}
+
+.about-photo-content{
+    margin-top: 28px;
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    @include mq(lg) {
+		padding: 15px 5% 10px;
+	}
+}
+
+.about-singer-content{
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    @include mq(lg) {
+		padding: 15px 5% 10px;
+	}
+}
+
+.secret-singer-img{
+    text-align: center;
+    img{
+        width: 100%;
+        max-width: 340px;
+        background-position: center center;
+    }
+}
+
+
+.youtube-content{
+    margin-top: 28px;
+}
+
+.video{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+
+    iframe{
+        position:absolute;
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+    }
+}
+
+.supporters-content{
+    margin-top: 220px;
+    padding: 15px 70px 20px 45px;
+    background-color: rgba($color: #FDDEB0, $alpha: 0.8);
+    display: flex;
+    @include mq(lg) {
+        display: block;
+        margin-top: 100px;
+		padding: 15px 5% 10px;
+        text-align: center;
+	}
+}
+
+.organizer-content{
+    min-width: 400px;
+    margin-right: 5px;
+    @include mq(lg){
+        width: 100%;
+        margin-bottom: 20px;
+        min-width: 100%;
+    }
+}
+
+.organizer-img{
+    margin-top: 60px;
+}
+
+.sponsor-content{
+    margin-left: auto;
+    width: calc(100% - 400px);
+    max-width: 80%;
+    @include mq(lg){
+        width: 100%;
+        max-width: 100%;
+        margin: 24px auto auto;
+    }
+}
+
+.sponsor-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sponsor-item{
+    width: 16%;
+    margin: 0 5px;
+    @include mq(lg){
+        width: calc(50% - 10px);
+        margin-top: 6px;
+    }
+}
+
+
+// --------------------------------
+// animation - アニメーション
+// --------------------------------
+
+@keyframes Hand{
+    0% {
+        opacity:0;
+    }
+    50% {
+        opacity:1;
+        -webkit-transform: scale(1.1);
+        transform: scale(1);
+    }
+    75%{
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    100%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.header-yotube-hand{
+    animation-name: Hand;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes FadeLeft{
+    0% {
+        opacity:0;
+        transform: translateX(100%);
+    }
+    100%{
+        opacity:1;
+        transform: translateX(0);
+    }
+}
+
+.fixed-twitter-link{
+    animation-name: FadeRight;
+    animation-duration: 1.5s;
+    animation-delay: 2.5s;
+    animation-fill-mode: backwards;
+    @include mq(lg){
+        animation-name: FadeLeft;
+    }
+}
+
+@keyframes FadeRight{
+    0% {
+        opacity:0;
+        transform: translateX(-100%);
+    }
+    100%{
+        opacity:1;
+        transform: translateX(0);
+    }
+}

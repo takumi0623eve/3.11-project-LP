@@ -1,0 +1,651 @@
+@charset "UTF-8";
+/* // レイアウト幅
+$layout-width-canvas: 1280px;
+$layout-width-inner: 1200px; */
+/* // ヘッダー高さ
+$header-height-pc: 100px;
+$header-height-sp: 60px; */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #514E43;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+
+@media screen and (max-width: 1199px) {
+  .hidden-pc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .hidden-sp {
+    display: none;
+  }
+}
+
+.sub-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 999px) {
+  .sub-title {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.discription-text {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 999px) {
+  .discription-text {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.fixed-twitter-link {
+  position: fixed;
+  z-index: 999;
+  left: 15px;
+  top: 40px;
+}
+
+@media screen and (max-width: 999px) {
+  .fixed-twitter-link {
+    left: auto;
+    right: 25px;
+    top: auto;
+    bottom: 10px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .fixed-twitter-link .twitter-link {
+    font-size: 12px;
+  }
+}
+
+.header {
+  position: relative;
+  width: 100%;
+}
+
+.header-wrapper {
+  background-image: url("../img/web-bg.png");
+  background-repeat: repeat-y;
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 999px) {
+  .header-wrapper {
+    padding-top: 50px;
+  }
+}
+
+.header-head {
+  padding: 0 70px 17px;
+}
+
+@media screen and (max-width: 999px) {
+  .header-head {
+    padding: 0 3% 10px;
+  }
+}
+
+.header-youtube-box {
+  position: relative;
+  height: 80px;
+  margin-bottom: 25px;
+}
+
+@media screen and (max-width: 999px) {
+  .header-youtube-box {
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header-youtube-box {
+    height: 40px;
+  }
+}
+
+.header-youtube-link {
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  right: 25px;
+  top: 0;
+  width: 314px;
+  height: inherit;
+  border-radius: 5px;
+}
+
+.header-youtube-link img {
+  width: 100%;
+  padding: 15px 35px;
+}
+
+@media screen and (max-width: 999px) {
+  .header-youtube-link {
+    width: 227px;
+  }
+  .header-youtube-link img {
+    padding: 3px 7px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header-youtube-link {
+    width: 157px;
+  }
+}
+
+.header-yotube-hand {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 70px;
+}
+
+@media screen and (max-width: 999px) {
+  .header-yotube-hand {
+    width: 50px;
+    bottom: -25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header-yotube-hand {
+    width: 40px;
+    bottom: -20px;
+  }
+}
+
+.header-qr {
+  max-width: 1514px;
+  margin: 0 auto;
+}
+
+.header-celebrity {
+  padding: 0 32px;
+  background-color: #FFDB8B;
+}
+
+.celebrity-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.celebrity-item {
+  width: calc(20% - 8px);
+  /*（100% / カード枚数 - 余白の幅 * 余白の数 / カード枚数 )*/
+  margin: 0 4px;
+  min-width: 250px;
+}
+
+.celebrity-item img {
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media screen and (max-width: 999px) {
+  .celebrity-item {
+    width: calc(25% - 8px);
+    min-width: 200px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .celebrity-item {
+    width: calc(100% - 20%);
+    margin: 0 10%;
+    min-width: 80%;
+  }
+}
+
+.main-wrapper {
+  padding: 245px 84px 5px;
+  background-image: url("../img/web-bg.png");
+  background-repeat: repeat-y;
+}
+
+@media screen and (max-width: 999px) {
+  .main-wrapper {
+    padding: 60px 3% 5px;
+  }
+}
+
+.main-lead {
+  width: 100%;
+  text-align: center;
+}
+
+.main-lead img {
+  object-fit: contain;
+}
+
+.big-twitter-link {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.big-twitter-link .twitter-link {
+  font-size: 40px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  letter-spacing: 0.1em;
+}
+
+.big-twitter-link .twitter-link .twitter-logo {
+  width: 36px;
+  height: 36px;
+}
+
+@media screen and (max-width: 999px) {
+  .big-twitter-link .twitter-link {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .big-twitter-link .twitter-link {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.what-doing-content {
+  margin-top: 28px;
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+  max-width: 2500px;
+}
+
+@media screen and (max-width: 999px) {
+  .what-doing-content {
+    padding: 15px 5% 10px;
+  }
+}
+
+.why-doing-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 999px) {
+  .why-doing-content {
+    display: block;
+  }
+}
+
+.why-doing-body {
+  max-width: 70%;
+  padding-right: 5%;
+}
+
+@media screen and (max-width: 999px) {
+  .why-doing-body {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+    padding-bottom: 16px;
+  }
+}
+
+.why-doing-img {
+  max-width: 30%;
+}
+
+@media screen and (max-width: 999px) {
+  .why-doing-img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.now-doing-content {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 999px) {
+  .now-doing-content {
+    display: block;
+  }
+}
+
+.now-doing-body {
+  max-width: 70%;
+  padding-left: 5%;
+}
+
+@media screen and (max-width: 999px) {
+  .now-doing-body {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-bottom: 16px;
+  }
+}
+
+.now-doing-img {
+  max-width: 30%;
+}
+
+@media screen and (max-width: 999px) {
+  .now-doing-img {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-bottom: 16px;
+  }
+}
+
+.about-FukushimaSoulFes {
+  margin-top: 28px;
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+}
+
+@media screen and (max-width: 999px) {
+  .about-FukushimaSoulFes {
+    padding: 15px 5% 10px;
+  }
+}
+
+.sections-content {
+  margin-top: 28px;
+  display: flex;
+}
+
+@media screen and (max-width: 999px) {
+  .sections-content {
+    display: block;
+  }
+}
+
+.about-schedule-content {
+  margin-right: 28px;
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+}
+
+@media screen and (max-width: 999px) {
+  .about-schedule-content {
+    padding: 15px 5% 10px;
+    margin-right: 0;
+    margin-bottom: 28px;
+  }
+}
+
+.event-row {
+  display: flex;
+  font-size: 24px;
+}
+
+.event-row + .event-row {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 999px) {
+  .event-row {
+    font-size: 16px;
+  }
+}
+
+.event-schedule {
+  width: 100%;
+}
+
+.event-time {
+  display: inline-block;
+  width: 20%;
+  min-width: 165px;
+}
+
+@media screen and (max-width: 999px) {
+  .event-time {
+    min-width: 110px;
+  }
+}
+
+.event-text {
+  display: inline-block;
+  width: 80%;
+}
+
+@media screen and (max-width: 999px) {
+  .event-text {
+    max-width: calc(100% - 110px);
+  }
+}
+
+.twitter-link {
+  display: inline-block;
+  color: inherit;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #00acee;
+  border-radius: 3px;
+  padding: 8px 12px;
+  margin: 4px 2px;
+  box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.6);
+}
+
+@media screen and (max-width: 999px) {
+  .twitter-link {
+    font-size: 16px;
+  }
+}
+
+.twitter-logo {
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+}
+
+.about-photo-content {
+  margin-top: 28px;
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+}
+
+@media screen and (max-width: 999px) {
+  .about-photo-content {
+    padding: 15px 5% 10px;
+  }
+}
+
+.about-singer-content {
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+}
+
+@media screen and (max-width: 999px) {
+  .about-singer-content {
+    padding: 15px 5% 10px;
+  }
+}
+
+.secret-singer-img {
+  text-align: center;
+}
+
+.secret-singer-img img {
+  width: 100%;
+  max-width: 340px;
+  background-position: center center;
+}
+
+.youtube-content {
+  margin-top: 28px;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.supporters-content {
+  margin-top: 220px;
+  padding: 15px 70px 20px 45px;
+  background-color: rgba(253, 222, 176, 0.8);
+  display: flex;
+}
+
+@media screen and (max-width: 999px) {
+  .supporters-content {
+    display: block;
+    margin-top: 100px;
+    padding: 15px 5% 10px;
+    text-align: center;
+  }
+}
+
+.organizer-content {
+  min-width: 400px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 999px) {
+  .organizer-content {
+    width: 100%;
+    margin-bottom: 20px;
+    min-width: 100%;
+  }
+}
+
+.organizer-img {
+  margin-top: 60px;
+}
+
+.sponsor-content {
+  margin-left: auto;
+  width: calc(100% - 400px);
+  max-width: 80%;
+}
+
+@media screen and (max-width: 999px) {
+  .sponsor-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px auto auto;
+  }
+}
+
+.sponsor-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sponsor-item {
+  width: 16%;
+  margin: 0 5px;
+}
+
+@media screen and (max-width: 999px) {
+  .sponsor-item {
+    width: calc(50% - 10px);
+    margin-top: 6px;
+  }
+}
+
+@keyframes Hand {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+    transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.header-yotube-hand {
+  animation-name: Hand;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes FadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fixed-twitter-link {
+  animation-name: FadeRight;
+  animation-duration: 1.5s;
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+}
+
+@media screen and (max-width: 999px) {
+  .fixed-twitter-link {
+    animation-name: FadeLeft;
+  }
+}
+
+@keyframes FadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
